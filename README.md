@@ -8,3 +8,5 @@ Projeto react native com expo bare workflow
 ## Dependencias
 - yarn add -D eslint eslint-plugin-react eslint-plugin-react-hooks @
 typescript-eslint/parser @typescript-eslint/eslint-plugin
+- yarn add -D prettier eslint-plugin-prettier eslint-config-pret
+tier
