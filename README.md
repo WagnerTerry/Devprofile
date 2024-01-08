@@ -6,9 +6,11 @@ Projeto react native com expo bare workflow
 - Selecionar:  Blank (Bare).
 
 ## Dependencias
-- yarn add -D eslint eslint-plugin-react eslint-plugin-react-hooks @
+- npm i -D eslint eslint-plugin-react eslint-plugin-react-hooks @
 typescript-eslint/parser @typescript-eslint/eslint-plugin
-- yarn add -D prettier eslint-plugin-prettier eslint-config-pret
+- npm i -D prettier eslint-plugin-prettier eslint-config-pret
 tier
-- yarn add -D  @types/styled-components-react-native
-- yarn add styled-components
+- npm i -D  @types/styled-components-react-native
+- npm i styled-components
+- npx expo install expo-font @expo-google-fonts/roboto
+- npx expo install expo-app-loading
