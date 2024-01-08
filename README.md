@@ -10,3 +10,5 @@ Projeto react native com expo bare workflow
 typescript-eslint/parser @typescript-eslint/eslint-plugin
 - yarn add -D prettier eslint-plugin-prettier eslint-config-pret
 tier
+- yarn add -D  @types/styled-components-react-native
+- yarn add styled-components
