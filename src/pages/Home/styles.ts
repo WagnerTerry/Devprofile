@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { RFPercentage } from 'react-native-responsive-fontsize';
+import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 
 export const Container = styled.View`
   flex: 1;
@@ -8,7 +8,28 @@ export const Container = styled.View`
 
 export const Header = styled.View`
   width: 100%;
-  height: ${RFPercentage(17)}px; // 17% da tela.
-  font-size: 24px;
+  height: ${RFPercentage(17)}px;
   background-color: ${props => props.theme.colors.secondary};
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding-top: ${RFValue(28)}px;
 `;
+// height: ${RFPercentage(17)}px; - densidade do pixel em 17%
+
+export const UserWrapper = styled.View`
+  width: 100%;
+  padding: 0 24px;
+`;
+
+export const UserInfo = styled.View``;
+
+export const UserAvatarButton = styled.TouchableOpacity``;
+
+export const UserAvatar = styled.Image``;
+
+export const UserInfoDetail = styled.View``;
+
+export const UserGreeting = styled.Text``;
+
+export const UserName = styled.Text``;
