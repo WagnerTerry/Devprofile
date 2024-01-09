@@ -20,7 +20,7 @@ const App: React.FunctionComponent = () => {
   // }
   return (
     <ThemeProvider theme={theme}>
-      <Home />;
+      <Home />
     </ThemeProvider>
   );
 };
