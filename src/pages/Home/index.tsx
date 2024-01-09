@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Container,
   Header,
+  Icon,
   UserAvatar,
   UserAvatarButton,
   UserGreeting,
@@ -26,6 +27,8 @@ export const Home: React.FunctionComponent = () => {
               <UserName>Wagner</UserName>
             </UserInfoDetail>
           </UserInfo>
+
+          <Icon name="power" />
         </UserWrapper>
       </Header>
     </Container>
