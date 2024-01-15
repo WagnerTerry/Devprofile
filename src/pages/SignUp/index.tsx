@@ -14,8 +14,15 @@ import {
 
 import logo from '../../assets/logo.png';
 import { KeyboardAvoidingView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
+interface ScreenNavigationProp {
+  goBack: () => void;
+}
 
 export const SignUp: React.FunctionComponent = () => {
+  const { goBack } = useNavigation<ScreenNavigationProp>();
+
   return (
     <KeyboardAvoidingView
       enabled
@@ -39,7 +46,7 @@ export const SignUp: React.FunctionComponent = () => {
           </Content>
         </Container>
       </ScrollView>
-      <BackToSignIn>
+      <BackToSignIn onPress={() => goBack()}>
         <Icon name="arrow-left" />
         <BackToSignInTitle>Voltar para logon</BackToSignInTitle>
       </BackToSignIn>
