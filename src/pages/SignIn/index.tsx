@@ -15,7 +15,7 @@ import { Button } from '../../components/Form/Button';
 import { useNavigation } from '@react-navigation/native';
 import { InputControl } from '../../components/Form/InputControl';
 import { useForm, FieldValues } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+// import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import logo from '../../assets/logo.png';
@@ -33,13 +33,34 @@ const formSchema = yup.object({
   password: yup.string().required('Informe a senha'),
 });
 
+const resolver = async (data: IFormInputs) => {
+  try {
+    await formSchema.validate(data, { abortEarly: false });
+    return { values: data, errors: {} };
+  } catch (error) {
+    return {
+      values: {},
+      errors: error.inner.reduce(
+        (
+          allErrors: Record<string, string>,
+          currentError: yup.ValidationError,
+        ) => {
+          allErrors[currentError.path as string] = currentError.message;
+          return allErrors;
+        },
+        {},
+      ),
+    };
+  }
+};
+
 export const SignIn: React.FunctionComponent = () => {
   const {
     handleSubmit,
     control,
-    formState: { errors },
+    // formState: { errors },
   } = useForm<FieldValues>({
-    resolver: yupResolver(formSchema),
+    resolver: resolver,
   });
 
   const { navigate } = useNavigation<ScreenNavigationProp>();
@@ -75,7 +96,7 @@ export const SignIn: React.FunctionComponent = () => {
               name="email"
               placeholder="Email"
               keyboardType="email-address"
-              // error={errors.email && errors.email.message}
+              // error={errors.email ? errors.email?.message : undefined}
             />
             <InputControl
               control={control}
@@ -83,7 +104,7 @@ export const SignIn: React.FunctionComponent = () => {
               placeholder="Senha"
               autoCorrect={false}
               secureTextEntry
-              // error={errors.email && errors.email.message}
+              // error={errors.password ? errors.password?.message : undefined}
             />
 
             <Button title="Entrar" onPress={handleSubmit(handleSignIn)} />

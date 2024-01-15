@@ -25,7 +25,7 @@ export const InputControl: React.FunctionComponent<Props> = ({
         )}
         name={name}
       />
-      {error && <Error>{error}</Error>};
+      {error !== undefined && <Error>{error}</Error>}
     </Container>
   );
 };
