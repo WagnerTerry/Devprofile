@@ -18,6 +18,7 @@ tier
 - npm i @react-navigation/native
 - npm i react-native-screens react-native-safe-area-context // projeto criado com bare ( android e ios embutido )
 - npm i @react-navigation/native-stack
+- npm i react-hook-form
 
 
 
