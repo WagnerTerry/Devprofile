@@ -1,7 +1,6 @@
 import React from 'react';
 import { Platform, ScrollView } from 'react-native';
 import { Button } from '../../components/Form/Button';
-import { Input } from '../../components/Form/Input';
 import {
   BackToSignIn,
   BackToSignInTitle,
@@ -14,14 +13,33 @@ import {
 
 import logo from '../../assets/logo.png';
 import { KeyboardAvoidingView } from 'react-native';
+import { useForm, FieldValues } from 'react-hook-form';
+import { InputControl } from '../../components/Form/InputControl';
+
 import { useNavigation } from '@react-navigation/native';
 
 interface ScreenNavigationProp {
   goBack: () => void;
 }
 
+interface IFormInputs {
+  [name: string]: any;
+}
+
 export const SignUp: React.FunctionComponent = () => {
+  const { handleSubmit, control } = useForm<FieldValues>();
+
   const { goBack } = useNavigation<ScreenNavigationProp>();
+
+  const handleSignUp = (form: IFormInputs) => {
+    const data = {
+      name: form.name,
+      email: form.email,
+      password: form.password,
+    };
+
+    console.log(data);
+  };
 
   return (
     <KeyboardAvoidingView
@@ -38,11 +56,30 @@ export const SignUp: React.FunctionComponent = () => {
             <Logo source={logo} />
 
             <Title>Crie sua conta</Title>
-            <Input placeholder="Nome completo" />
-            <Input placeholder="Email" />
-            <Input placeholder="Senha" />
+            <InputControl
+              autoCapitalize="none"
+              autoCorrect={false}
+              control={control}
+              name="name"
+              placeholder="Nome completo"
+            />
+            <InputControl
+              autoCapitalize="none"
+              autoCorrect={false}
+              control={control}
+              name="email"
+              placeholder="Email"
+              keyboardType="email-address"
+            />
+            <InputControl
+              control={control}
+              name="password"
+              placeholder="Senha"
+              autoCorrect={false}
+              secureTextEntry
+            />
 
-            <Button title="Criar conta" />
+            <Button title="Entrar" onPress={handleSubmit(handleSignUp)} />
           </Content>
         </Container>
       </ScrollView>
