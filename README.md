@@ -20,4 +20,4 @@ tier
 - npm i @react-navigation/native-stack
 - npm i react-hook-form
 - npm i @hookform/resolvers yup
-
+- npm i axios
