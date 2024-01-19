@@ -25,7 +25,7 @@ import { useForm, FieldValues } from 'react-hook-form';
 import * as yup from 'yup';
 
 import logo from '../../assets/logo.png';
-import { AuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 
 interface ScreenNavigationProp {
   navigate: (screen: string) => void;
@@ -62,7 +62,7 @@ const resolver = async (data: IFormInputs) => {
 };
 
 export const SignIn: React.FunctionComponent = () => {
-  const { signIn } = React.useContext(AuthContext);
+  const { signIn } = useAuth();
   const [loading, setLoading] = React.useState(false);
   const {
     handleSubmit,
