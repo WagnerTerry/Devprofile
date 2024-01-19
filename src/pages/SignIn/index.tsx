@@ -22,7 +22,7 @@ import { useNavigation } from '@react-navigation/native';
 import { InputControl } from '../../components/Form/InputControl';
 import { useForm, FieldValues } from 'react-hook-form';
 // import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+// import * as yup from 'yup';
 
 import logo from '../../assets/logo.png';
 import { useAuth } from '../../context/AuthContext';
@@ -35,42 +35,22 @@ interface IFormInputs {
   [name: string]: any;
 }
 
-const formSchema = yup.object({
-  email: yup.string().email('Email inválido').required('Informe o email'),
-  password: yup.string().required('Informe a senha'),
-});
-
-const resolver = async (data: IFormInputs) => {
-  try {
-    await formSchema.validate(data, { abortEarly: false });
-    return { values: data, errors: {} };
-  } catch (error) {
-    return {
-      values: {},
-      errors: error.inner.reduce(
-        (
-          allErrors: Record<string, string>,
-          currentError: yup.ValidationError,
-        ) => {
-          allErrors[currentError.path as string] = currentError.message;
-          return allErrors;
-        },
-        {},
-      ),
-    };
-  }
-};
+// const formSchema = yup.object({
+//   email: yup.string().email('Email inválido').required('Informe o email'),
+//   password: yup.string().required('Informe a senha'),
+// });
 
 export const SignIn: React.FunctionComponent = () => {
   const { signIn } = useAuth();
   const [loading, setLoading] = React.useState(false);
-  const {
-    handleSubmit,
-    control,
-    // formState: { errors },
-  } = useForm<FieldValues>({
-    resolver: resolver,
-  });
+  // const {
+  //   handleSubmit,
+  //   control,
+  //   // formState: { errors },
+  // } = useForm<FieldValues>({
+  //   resolver: resolver,
+  // });
+  const { handleSubmit, control } = useForm<FieldValues>();
 
   const { navigate } = useNavigation<ScreenNavigationProp>();
 
