@@ -57,6 +57,7 @@ const resolver = async (data: IFormInputs) => {
 
 export const SignIn: React.FunctionComponent = () => {
   const auth = React.useContext(AuthContext);
+  const [loading, setLoading] = React.useState(false);
   console.log('auth', auth);
   const {
     handleSubmit,
@@ -74,6 +75,8 @@ export const SignIn: React.FunctionComponent = () => {
       password: form.password,
     };
     console.log(data);
+    setLoading(true);
+    auth.signIn();
   };
 
   return (
@@ -110,7 +113,11 @@ export const SignIn: React.FunctionComponent = () => {
               // error={errors.password ? errors.password?.message : undefined}
             />
 
-            <Button title="Entrar" onPress={handleSubmit(handleSignIn)} />
+            <Button
+              title="Entrar"
+              disabled={loading}
+              onPress={handleSubmit(handleSignIn)}
+            />
 
             <ForgotPasswordButton>
               <ForgotPasswordTitle>Esqueci minha senha</ForgotPasswordTitle>
