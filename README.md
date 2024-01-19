@@ -14,6 +14,7 @@ tier
 - npm i styled-components
 - npm i  expo install expo-font @expo-google-fonts/roboto
 - npm i  expo install expo-app-loading
+- npm i expo install @react-native-async-storage/async-storage
 - npm i react-native-responsive-fontsize // para densidade de pixels
 - npm i @react-navigation/native
 - npm i react-native-screens react-native-safe-area-context // projeto criado com bare ( android e ios embutido )
