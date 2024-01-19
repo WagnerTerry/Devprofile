@@ -88,7 +88,10 @@ export const SignUp: React.FunctionComponent = () => {
               secureTextEntry
             />
 
-            <Button title="Entrar" onPress={handleSubmit(handleSignUp)} />
+            <Button
+              title="Criar uma conta"
+              onPress={handleSubmit(handleSignUp)}
+            />
           </Content>
         </Container>
       </ScrollView>
