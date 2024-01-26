@@ -31,27 +31,29 @@ interface IFormInputs {
   [name: string]: any;
 }
 
-export const ForgotPassword: React.FunctionComponent = () => {
+export const ResetPassword: React.FunctionComponent = () => {
   const { handleSubmit, control } = useForm<FieldValues>();
 
   const { goBack, navigate } = useNavigation<ScreenNavigationProp>();
 
-  const handleForgotPassowrd = async (form: IFormInputs) => {
+  const handleResetPassword = async (form: IFormInputs) => {
     const data = {
-      email: form.email,
+      token: form.token,
+      password: form.password,
+      password_confirmation: form.password_confirmation,
     };
 
     try {
-      await api.post('password/forgot', data);
+      await api.post('password/reset', data);
       Alert.alert(
-        'Email enviado',
-        'Você receberá um email com as instruções para redefinição da senha.',
+        'Senha redefinida',
+        'A senha foi redefinida com sucesso. Efetue login para acessar',
       );
-      navigate('ResetPassword');
+      navigate('SignIn');
     } catch (error) {
       Alert.alert(
-        'Erro no envio de email',
-        'Ocorreu um erro ao enviar o email. Tente novamente.',
+        'Erro ao resetar senha',
+        'Ocorreu um erro ao resetar sua senha. Tente novamente.',
       );
     }
   };
@@ -69,19 +71,31 @@ export const ForgotPassword: React.FunctionComponent = () => {
         <Container>
           <Content>
             <Logo source={logo} />
-            <Title>Esqueci minha senha</Title>
+            <Title>Redefinir a senha</Title>
             <InputControl
               autoCapitalize="none"
               autoCorrect={false}
               control={control}
-              name="email"
-              placeholder="Email"
-              keyboardType="email-address"
+              name="token"
+              placeholder="Código"
             />
-
+            <InputControl
+              control={control}
+              name="password"
+              placeholder="Senha"
+              autoCorrect={false}
+              secureTextEntry
+            />
+            <InputControl
+              control={control}
+              name="password_confirmation"
+              placeholder="Senha"
+              autoCorrect={false}
+              secureTextEntry
+            />
             <Button
-              title="Enviar"
-              onPress={handleSubmit(handleForgotPassowrd)}
+              title="Entrar"
+              onPress={handleSubmit(handleResetPassword)}
             />
           </Content>
         </Container>
