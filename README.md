@@ -22,3 +22,4 @@ tier
 - npm i react-hook-form
 - npm i @hookform/resolvers yup
 - npm i axios
+- npm i react-native-gesture-handler
