@@ -76,13 +76,13 @@ export const UserList = styled(
 
 export const UserListEmpty = styled.Text`
   font-size: ${RFValue(18)}px;
-  font-family: ${({ theme }) => theme.fonts.regular};
+  /* font-family: ${({ theme }) => theme.fonts.regular}; */
   color: ${({ theme }) => theme.colors.gray500};
 `;
 
 export const UserListHeader = styled.Text`
   font-size: ${RFValue(24)}px;
-  font-family: ${({ theme }) => theme.fonts.bold};
+  /* font-family: ${({ theme }) => theme.fonts.bold}; */
   font-weight: bold;
   color: ${({ theme }) => theme.colors.primary};
   margin-bottom: ${RFValue(8)}px;

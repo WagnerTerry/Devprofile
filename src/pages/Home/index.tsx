@@ -73,7 +73,7 @@ export const Home: React.FunctionComponent = () => {
       </Header>
 
       <UserList
-        data={users}
+        // data={users}
         keyExtractor={item => item.id}
         renderItem={({ item }) => <User data={item} onPress={() => {}} />}
         ListHeaderComponent={<UserListHeader>Usuários</UserListHeader>}
