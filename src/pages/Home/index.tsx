@@ -45,6 +45,10 @@ export const Home: React.FunctionComponent = () => {
     navigate('UserDetails', { userId });
   };
 
+  const handleUserProfile = () => {
+    navigate('UserProfile');
+  };
+
   const handleSignOut = () => {
     Alert.alert('Tem certeza?', 'Deseja realmente sair da aplicação?', [
       {
@@ -62,7 +66,7 @@ export const Home: React.FunctionComponent = () => {
       <Header>
         <UserWrapper>
           <UserInfo>
-            <UserAvatarButton onPress={() => {}}>
+            <UserAvatarButton onPress={handleUserProfile}>
               <UserAvatar
                 source={
                   user.avatar_url ? { uri: user.avatar_url } : avatarDefault
