@@ -47,7 +47,7 @@ interface IFormInputs {
 // });
 
 export const UserProfileEdit: React.FunctionComponent = () => {
-  const { user } = useAuth();
+  const { user, updateUser } = useAuth();
   const { handleSubmit, control } = useForm<FieldValues>();
 
   const { goBack } = useNavigation<ScreenNavigationProp>();
@@ -59,7 +59,8 @@ export const UserProfileEdit: React.FunctionComponent = () => {
     };
 
     try {
-      await api.put('profile', data);
+      const response = await api.put('profile', data);
+      updateUser(response.data);
       Alert.alert(
         'Perfil atualizado',
         'Os dados do seu perfil foram atualizados.',
